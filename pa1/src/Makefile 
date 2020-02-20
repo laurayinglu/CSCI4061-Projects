@@ -1,0 +1,104 @@
+all: main.c
+	gcc -o mymake main.c graph.c dfs_stack.c
+
+test-main: all test1 test2 test3 test4 test5 test6
+
+test1:	all
+	@printf "===Testing mymake===\n"
+	@printf "\nTest 1a: Normal case - print the content\n"
+	./mymake -p Makefile1
+	@printf "\n"
+	@printf "\nTest 1b: Normal case - pick target\n"
+	./mymake Makefile1
+	@printf "\n"
+	@printf "\nTest 1c: Normal case - valid target\n"
+	./mymake Makefile1 clean
+	@printf "\n"
+	@printf "\nTest 1d: Failure case - target doesn't exist\n"
+	./mymake Makefile1 clean1
+	@printf "\n"
+	@printf "\nTest 1e: Normal case - print recipes\n"
+	./mymake -r Makefile1
+	@printf "\n"
+
+test2:	all
+	@printf "\nTest 2a: Normal case\n"
+	./mymake -p Makefile2
+	@printf "\n"
+	@printf "\nTest 2b: Normal case\n"
+	./mymake Makefile2 clean
+	@printf "\n"
+	@printf "\nTest 2c: Normal case - print recipes\n"
+	./mymake -r Makefile2
+	@printf "\n"
+	@printf "\nTest 2d: Failure case - target doesn't exist\n"
+	./mymake Makefile2 thunder
+	@printf "\n"
+	@printf "\nTest 2e: Failure case - file doesn't exist\n"
+	./mymake thunder Makefile2
+	@printf "\n"
+	@printf "\nTest 2f: Failure case - incorrect arg order\n"
+	./mymake Makefile2 -p
+	@printf "\n"
+
+test3:	all
+	@printf "\nTest 3a: Failure case - incorrect order\n"
+	./mymake Makefile3 -p
+	@printf "\n"
+	@printf "\nTest 3b: Failure case - too many args\n"
+	./mymake Makefile3 -p myprog.c
+	@printf "\n"
+	@printf "\nTest 3c: Normal case\n"
+	./mymake -p Makefile3
+	@printf "\n"
+	@printf "\nTest 3d: Normal case\n"
+	./mymake Makefile3 myprog.c
+	@printf "\n"
+	@printf "\nTest 3e: Normal case - execute rar\n"
+	./mymake Makefile3 rar
+	@printf "\n"
+	@printf "\nTest 3f: Normal case: execute rar\n"
+	./mymake Makefile3
+	@printf "\n"
+	@printf "\nTest 3g: Normal case - print recipes\n"
+	./mymake -r Makefile3
+	@printf "\n"
+
+test4:	all
+	@printf "\nTest 4a: Failure case - incorrect order\n"
+	./mymake Makefile4 -p
+	@printf "\n"
+	@printf "\nTest 4b: Failure case - multiple args\n"
+	./mymake Makefile4 -p renderer.o
+	@printf "\n"
+	@printf "\nTest 4c: Failure case - target doesn't exist\n"
+	./mymake Makefile4 random
+	@printf "\n"
+	@printf "\nTest 4d: Failure case - Multiple arguments\n"
+	./mymake -p Makefile4 -p
+	@printf "\n"
+	@printf "\nTest 4e: Normal case - tokenize contents of file\n"
+	./mymake -p Makefile4
+	@printf "\n"
+	@printf "\nTest 4f: Normal case\n"
+	./mymake Makefile4 test.o
+	@printf "\n"
+	@printf "\nTest 4g: Normal case - execute renderer.o\n"
+	./mymake Makefile4 renderer.o
+	@printf "\n"
+
+test5: all
+	@printf "\nTest 5a: Failure case - file doesn't exist\n"
+	./mymake Makefilex
+	@printf "\n"
+	@printf "\nTest 5b: Failure case - file doesn't exist\n"
+	./mymake -p d
+	@printf "\n"
+
+test6: all
+	@printf "\nTest 6: Failure case - Multiple arguments\n"
+	./mymake -p -r Makefile1
+	@printf "\n"
+
+clean:
+	rm -f mymake *.o

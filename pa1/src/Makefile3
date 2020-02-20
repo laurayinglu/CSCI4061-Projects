@@ -1,0 +1,6 @@
+rar: myprog.c
+	gcc -g -Wall -o myprog myprog.c
+	ls -l
+
+myprog.c :
+	rm -rf myprog
