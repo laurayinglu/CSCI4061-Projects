@@ -1,8 +1,7 @@
 ###### test machine: CSEL-KH4250-27
 ###### date: 11/13/2019
-###### name: Ying Lu, Junjie Ma
-###### x500: lu000097, ma000098
-
+###### name: Ying Lu
+###### x500: lu000097
 ***
 * The purpose of our program:
     * In this program we will use multithreading to calculate the number of word starting letter of a file.
