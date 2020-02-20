@@ -1,8 +1,8 @@
 
 ###### test machine: CSEL-KH4250-47
 ###### date: 10/09/2019
-###### name: Ying Lu, Junjie Ma
-###### x500: lu000097, ma000098
+###### name: Ying Lu
+###### x500: lu000097
 ***
 * The purpose of our program:
     * The purpose of this program is to create a program to parse the makefile and  
