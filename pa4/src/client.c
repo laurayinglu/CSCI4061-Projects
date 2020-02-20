@@ -22,14 +22,14 @@ FILE *logfp;
 
 void createLogFile(void)
 {
-    pid_t p = fork();
-    if (p == 0)
-        execl("/bin/rm", "rm", "-rf", "log", NULL);
+	pid_t p = fork();
+	if (p == 0)
+	execl("/bin/rm", "rm", "-rf", "log", NULL);
 
-    wait(NULL);
-    mkdir("log", 0700);
-    logfp = fopen("log/log_client.txt", "w");
-    //fclose(logfp);
+	wait(NULL);
+	mkdir("log", 0700);
+	logfp = fopen("log/log_client.txt", "w");
+	//fclose(logfp);
 }
 
 void display(int freq[], int num)
@@ -38,13 +38,12 @@ void display(int freq[], int num)
 	{
 		printf("The letter is: %c, The frequency is: %d\n", i + 'a', freq[i]);
 	}
-    printf("\n");
+	printf("\n");
 }
 
 
 void logWrite(char* format, ...)
 {
-    //printf("here?\n");
     char msg[256];
     va_list valist;
     va_start(valist, format);
@@ -52,7 +51,6 @@ void logWrite(char* format, ...)
 
     fprintf(logfp, "%s", msg);
     fflush(logfp);
-    //fclose(logfp);
 }
 
 // deal with single file
@@ -69,7 +67,6 @@ void mapFile(char *fname, int *freq)
 
     while (fgets(line, LINE_SIZE, fp))
     {
-        //printf("line is %s\n", line);
         char target = tolower(line[0]);
         if (target >= 'a' && target <= 'z')
             ++freq[target - 'a'];
