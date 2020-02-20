@@ -1,8 +1,8 @@
 
 ###### test machine: CSEL-KH4250-32
 ###### date: 12/06/2019
-###### name: Ying Lu, Junjie Ma
-###### x500: lu000097, ma000098
+###### name: Ying Lu
+###### x500: lu000097
 ***
 * The purpose of our program:
   In this program, we will extend the word counting application of programming assignment 2 using the socket programming. We will also use socket programming to control multi-threading.
