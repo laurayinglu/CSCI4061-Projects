@@ -1,7 +1,6 @@
 
 ###### test machine: CSEL-KH4250-47
 ###### date: 10/09/2019
-###### name: Ying Lu
 ###### x500: lu000097
 ***
 * The purpose of our program:
